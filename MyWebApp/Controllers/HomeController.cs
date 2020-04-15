@@ -12,6 +12,7 @@ namespace MyWebApp.Controllers
 	{
 		public IActionResult Index()
 		{
+			ViewBag.DBName ="DBName:" + Environment.GetEnvironmentVariable("MYSQL_DATABASE");
 			return View();
 		}
 
@@ -23,7 +24,7 @@ namespace MyWebApp.Controllers
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
-			ViewBag.DBName= Environment.GetEnvironmentVariable("MYSQL_DATABASE");
+			
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
 	}
