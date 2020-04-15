@@ -14,9 +14,15 @@ namespace MyWebApp
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
+		public Startup(IHostingEnvironment env)
 		{
-			Configuration = configuration;
+			//Configuration = configuration;
+			var builder = new ConfigurationBuilder()
+			   .SetBasePath(env.ContentRootPath)
+			   .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+			   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+			   .AddEnvironmentVariables();
+			Configuration = builder.Build();
 		}
 
 		public IConfiguration Configuration { get; }
@@ -34,7 +40,7 @@ namespace MyWebApp
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-			services.Add(new ServiceDescriptor(typeof(MusicStoreContext), new MusicStoreContext(Configuration.GetConnectionString("DefaultConnection"))));
+			services.Add(new ServiceDescriptor(typeof(MusicStoreContext), new MusicStoreContext(Configuration["ConnectionString"])));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

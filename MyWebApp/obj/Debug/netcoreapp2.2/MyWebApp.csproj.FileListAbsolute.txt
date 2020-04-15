@@ -28,3 +28,4 @@ C:\Users\KundanGupta\source\repos\MyWebApp\MyWebApp\obj\Debug\netcoreapp2.2\MyWe
 C:\Users\KundanGupta\source\repos\MyWebApp\MyWebApp\obj\Debug\netcoreapp2.2\MyWebApp.dll
 C:\Users\KundanGupta\source\repos\MyWebApp\MyWebApp\obj\Debug\netcoreapp2.2\MyWebApp.pdb
 C:\Users\KundanGupta\source\repos\MyWebApp\MyWebApp\obj\Debug\netcoreapp2.2\MyWebApp.csproj.CopyComplete
+C:\Users\KundanGupta\source\repos\MyWebApp\MyWebApp\obj\Debug\netcoreapp2.2\Razor\Views\Albums\Index.g.cshtml.cs
