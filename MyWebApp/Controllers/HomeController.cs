@@ -12,7 +12,10 @@ namespace MyWebApp.Controllers
 	{
 		public IActionResult Index()
 		{
-			ViewBag.DBName ="Hostname:" + Environment.GetEnvironmentVariable("HOSTNAME");
+			ViewBag.Host = "Hostname:" + Environment.GetEnvironmentVariable("HOSTNAME_MYSQL");
+			ViewBag.User = "MYSQL_USER:" + Environment.GetEnvironmentVariable("MYSQL_USER");
+			ViewBag.Password = "MYSQL_PASSWORD:" + Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+			ViewBag.DBName = "MYSQL_DATABASE:" + Environment.GetEnvironmentVariable("MYSQL_DATABASE");
 			return View();
 		}
 
