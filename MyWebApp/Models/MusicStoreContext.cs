@@ -21,23 +21,53 @@ namespace MyWebApp.Models
 		public List<Album> GetAllAlbums()
 		{
 			List<Album> list = new List<Album>();
+			MySqlCommand cmd=null;
 
 			using (MySqlConnection conn = GetConnection())
 			{
-				conn.Open();
-				MySqlCommand cmd = new MySqlCommand("select * from pet", conn);
+				try
+				{
+					conn.Open();
+					cmd = new MySqlCommand("select * from pet", conn);
+				}
+				catch (Exception)
+				{
+					list.Add(new Album()
+					{
+						Id = 1,// Convert.ToInt32(reader["Id"]),
+						Name = "Test",
+						ArtistName = "Test",
+						Price = 200,//Convert.ToInt32(reader["Price"]),
+						Genre = "test"
+					});
+				}
+				
 
 				using (var reader = cmd.ExecuteReader())
 				{
-					while (reader.Read())
+					if (reader.HasRows)
+					{
+						while (reader.Read())
+						{
+							list.Add(new Album()
+							{
+								Id = 1,// Convert.ToInt32(reader["Id"]),
+								Name = reader["Name"].ToString(),
+								ArtistName = reader["Owner"].ToString(),
+								Price = 200,//Convert.ToInt32(reader["Price"]),
+								Genre = Environment.GetEnvironmentVariable("HOSTNAME")//reader["species"].ToString()
+							});
+						}
+					}
+					else
 					{
 						list.Add(new Album()
 						{
 							Id = 1,// Convert.ToInt32(reader["Id"]),
-							Name = reader["Name"].ToString(),
-							ArtistName = reader["Owner"].ToString(),
+							Name = "Test",
+							ArtistName = "Test",
 							Price = 200,//Convert.ToInt32(reader["Price"]),
-							Genre = reader["species"].ToString()
+							Genre = "test"
 						});
 					}
 				}
