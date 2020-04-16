@@ -7,7 +7,7 @@ using MyWebApp.Models;
 
 namespace MyWebApp.Controllers
 {
-	public class AlbumController : Controller
+	public class AlbumsController : Controller
 	{
 		public IActionResult Index()
 		{
