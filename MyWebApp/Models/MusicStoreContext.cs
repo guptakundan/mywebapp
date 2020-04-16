@@ -55,7 +55,7 @@ namespace MyWebApp.Models
 								Name = reader["Name"].ToString(),
 								ArtistName = reader["Owner"].ToString(),
 								Price = 200,//Convert.ToInt32(reader["Price"]),
-								Genre = Environment.GetEnvironmentVariable("HOSTNAME")//reader["species"].ToString()
+								Genre = reader["species"].ToString()
 							});
 						}
 					}

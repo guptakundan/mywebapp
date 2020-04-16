@@ -37,10 +37,14 @@ namespace MyWebApp
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
-
+			
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-			services.Add(new ServiceDescriptor(typeof(MusicStoreContext), new MusicStoreContext(Configuration["ConnectionString"])));
+			string coonection = string.Format(Configuration["ConnectionString"], Configuration["HOSTNAME_MYSQL"], Configuration["PORT_NAME"],
+				Configuration["MYSQL_DATABASE"], Configuration["MYSQL_USER"], Configuration["MYSQL_PASSWORD"]);
+
+			services.Add(new ServiceDescriptor(typeof(MusicStoreContext), new MusicStoreContext(coonection)));
+			//services.Add(new ServiceDescriptor(typeof(MusicStoreContext), new MusicStoreContext(Configuration["ConnectionString"])));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
