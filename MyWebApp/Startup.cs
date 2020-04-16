@@ -62,7 +62,7 @@ namespace MyWebApp
 			{
 				routes.MapRoute(
 					name: "default",
-					template: "{controller=Album}/{action=Index}/{id?}");
+					template: "{controller=Home}/{action=Index}/{id?}");
 			});
 		}
 	}
