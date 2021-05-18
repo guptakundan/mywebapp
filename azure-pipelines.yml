@@ -19,10 +19,5 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-
-- task: DownloadBuildArtifacts@0
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'KundanGupta0230'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    zipAfterPublish: true
+    
