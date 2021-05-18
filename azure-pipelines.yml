@@ -1,4 +1,0 @@
-- task: IISWebAppDeploymentOnMachineGroup@0
-  inputs:
-    WebSiteName: 'AmyraGupta'
-    Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
